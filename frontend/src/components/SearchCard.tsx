@@ -48,7 +48,7 @@ const SearchDialog = () => {
   },[open,blogs])
 
   useEffect(() => {
-    setDummyBlog(blogs.filter((blog) => blog.title.toLowerCase().includes(filter.toLowerCase()) || blog.content.toLowerCase().includes(filter.toLowerCase())))
+    setDummyBlog(blogs.filter((blog:any) => blog.title.toLowerCase().includes(filter.toLowerCase()) || blog.content.toLowerCase().includes(filter.toLowerCase())))
   },[filter, blogs])
 
   return (

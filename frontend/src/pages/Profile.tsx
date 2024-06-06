@@ -54,14 +54,14 @@ export const  Profile = () => {
                                 <div className=" flex justify-center flex-col m-1 text-red-500 text-3xl">•</div>
                                 <div className=" flex justify-center flex-col m-1 text-gray-500">Draft</div>
                             </div>
-                            {homeBLogs.map((blog) => <MeidumBlogCard blog={blog} flag={bookmarkedBlogs.includes(blog.id)} draft={blog.draft} type="Home"/>) }
+                            {homeBLogs.map((blog:any) => <MeidumBlogCard blog={blog} flag={bookmarkedBlogs.includes(blog.id)} draft={blog.draft} type="Home"/>) }
                          </div> :<div className=" cursor-pointer mx-10 border-dashed border border-slate-400 flex justify-center flex-col min-h-24" onClick={() => navigate("/createBlog")}>
                             <div className="flex justify-center">
                                 <div className="flex justify-center flex-col mr-0.5"><PlusIcon/></div>It looks empty here. Start your blogging journey by creating your first blog post now.
                             </div>
                          </div> : 
 
-                         listBLogs.length > 0 ? listBLogs.map((blog) => <MeidumBlogCard blog={blog} flag={true} type="List" draft={blog.draft}/>) :
+                         listBLogs.length > 0 ? listBLogs.map((blog:any) => <MeidumBlogCard blog={blog} flag={true} type="List" draft={blog.draft}/>) :
                          <div className=" cursor-pointer mx-10 border-dashed border border-slate-400 min-h-24 flex justify-center flex-col" onClick={() => navigate("/Blogs")}>
                             <div className="flex justify-center">
                                 No bookmarks yet! Visit the blogs page to start bookmarking your favorite posts.

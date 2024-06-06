@@ -11,9 +11,21 @@ import { BACKEND_URL } from "@/config"
 import moment from "moment"
 import { SingleBlogSkeleton } from "@/components/SingleBlogSkeleton"
 
+interface blogType {
+    draft: boolean,
+    title: string,
+    content: string,
+    id: string,
+    likes: number,
+    published: string,
+    image: string,
+    tags: string[],
+    author: {name: string, avatar: string, bio: string}
+}
+
 export const Blog = () => {
     const[mark, setMark] = useState(false);
-    const[blog,setBlog] = useState(null);
+    const[blog,setBlog] = useState<blogType|null>(null);
     const[url, setUrl] = useRecoilState(urlAtom);
     const bookmarkedBlogs = useRecoilValue(bookmarkAtom);
     const [likeValue, setLikeValue] = useRecoilState(likeAtom);
@@ -36,19 +48,20 @@ export const Blog = () => {
                     response.data.blog.published = x
                     setBlog(response.data.blog);
                     setLikeValue(response.data.blog.likes);
-                    await new Promise<void>((resolve, reject) => {
+                    await new Promise<void>((resolve) => {
                         setTimeout(() => {
                             resolve();
                         }, 7000);
                     })
                     setLoading(false);
                 })
+                mark;
             }
         }
         get();
     }, [url])
     
-    if(loading){
+    if(loading || !blog){
         return (
             <div>
                 <AppBar/>

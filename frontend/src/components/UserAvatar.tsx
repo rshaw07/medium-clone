@@ -3,12 +3,13 @@ import {
     AvatarFallback,
     AvatarImage,
   } from "@/components/ui/avatar"
+import { Spinner } from "@/icons/Spinner"
   
   export function UserAvatar({avatar}:{avatar: string}) {
     return (
       <Avatar>
         <AvatarImage src={avatar} alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarFallback><Spinner /></AvatarFallback>
       </Avatar>
     )
   }

@@ -1,14 +1,12 @@
-
-// type SignProps = 'signin' |'signup';
-
 import { SignupInput } from "@coder_rishi07/medium-common";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios";
 import { BACKEND_URL } from "../config"
+import { Spinner } from "@/icons/Spinner";
 
 export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
-
+    const [flag, setFlag] = useState(false);
     useEffect( () => {
 
         if(localStorage.getItem("token")){
@@ -25,6 +23,7 @@ export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
     const navigate = useNavigate();
 
     async function onClick(){
+        setFlag(true)
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`,
             postInputs
@@ -32,6 +31,7 @@ export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
             localStorage.setItem("token", "Bearer " + response.data.jwt);
             navigate("/blogs")
         } catch (error) {
+            setFlag(false)
             alert(`error while ${type}`)
         }
 
@@ -67,7 +67,7 @@ export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
                         }));
                     }}/>
 
-                    <button onClick={onClick} type="button" className="text-white bg-gray-900 w-full hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5">{type==='signin'?"Login": "Sign up"}</button>
+                    <button onClick={onClick} type="button" className="text-white bg-gray-900 w-full hover:bg-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 flex justify-center">{flag?<Spinner/>:null}{type==='signin'?"Login": "Sign up"}</button>
                 </div>    
             </div>
         </div>

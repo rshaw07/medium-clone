@@ -1,4 +1,4 @@
-import { allBlogAtom, userAtom } from "@/atoms"
+import { allBlogAtom } from "@/atoms"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -18,14 +18,12 @@ import axios from "axios"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import moment from "moment"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useRecoilState, useSetRecoilState } from "recoil"
+import { useSetRecoilState } from "recoil"
 
 export function EditProfile({user, setUser}: {user: any, setUser: any}) {
   const [data, setData] = useState(user);
-  const [img,setImg] = useState(null);
+  const [img,setImg] = useState<File|null>(null);
   const setBlogs = useSetRecoilState(allBlogAtom);
-  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -65,10 +63,6 @@ export function EditProfile({user, setUser}: {user: any, setUser: any}) {
         const x = moment(blog.published).format("MMMM DD, YYYY");
         return {...blog, published: x}
     }));
-    
-    // navigate(`/blogs`);
-    // window.location.reload();
-    
   }
 
   return (
@@ -113,7 +107,11 @@ export function EditProfile({user, setUser}: {user: any, setUser: any}) {
             <Label htmlFor="username" className="text-right">
               Avatar
             </Label>
-            <input type="file" onChange={(e) => setImg(e.target.files[0])} className="col-span-3 border p-2 border-black" />
+            <input type="file" onChange={(e) =>{
+              if(e.target.files && e.target.files[0]){
+                setImg(e.target.files[0])
+              }
+            } } className="col-span-3 border p-2 border-black" />
           </div>
         </div>
         <DialogFooter>

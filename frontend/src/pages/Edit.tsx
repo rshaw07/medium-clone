@@ -5,9 +5,17 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useRecoilState } from "recoil";
 
+interface Props {
+    id: string
+    image: string
+    content: string
+    tags: string[]
+    title: string
+}
+
 export const Edit = () => {
     const [url, setUrl] = useRecoilState(urlAtom);
-    const [blog, setBlog] = useState(null);
+    const [blog, setBlog] = useState<Props|null>(null);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     useEffect(() => {
