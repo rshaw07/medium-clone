@@ -60,13 +60,14 @@ export const Edit = () => {
         return (
             <div>
                 <AppBar2 tagsInput={[]} prevId={""} imageUrl={""} content={content} title={title}/>
-                <div className=" ml-64">
+                <div className=" ml-64 mt-10">
                     <Skeleton className="bg-gray-200 h-12 mb-4 w-full rounded-lg" />
                     <Skeleton className="bg-gray-200 h-48 w-full rounded-lg" />
                 </div>
             </div>
         )
     }
+    // console.log(blog.tags);
     return (
         <div>
             <div>

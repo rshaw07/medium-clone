@@ -1,11 +1,11 @@
 import { Bookmark } from "@/icons/BookmarkIcon";
-import { Clipboard } from "@/icons/ClipboardIcon";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { EditMenu } from "./EditMenu";
 import { UserAvatar } from "./UserAvatar";
 import { Bm2Icon } from "@/icons/Bm2Icon2";
 import { ImageCard } from "./ImageCard";
+import { ClipboardPopover } from "./ClipboardPopover";
 
 interface BlogCardType {
     author: {
@@ -76,7 +76,7 @@ export const MeidumBlogCard = ({blog, flag, type, draft}: {blog: BlogCardType,fl
               } `}
             >
               <div className="flex justify-center flex-col">
-                <Clipboard blogId={blog.id} />
+                <ClipboardPopover blogId={blog.id} />
               </div>
               <div className=" flex justify-center flex-col">
                 {type === "Home" ? (

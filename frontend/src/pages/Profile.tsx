@@ -8,6 +8,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkAtom, bookmarkedBlogsSelector, profileHomeBlogSelector, userAtom } from "@/atoms";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
+import { ProfilePageSkeleton } from "@/components/ProfilePageSkeleton";
 
 export const  Profile = () => {
     const [focus, setFocus] = useState("Home");
@@ -15,6 +16,7 @@ export const  Profile = () => {
     const homeBLogs = useRecoilValue(profileHomeBlogSelector);
     const [user,setUser] = useRecoilState(userAtom);
     const bookmarkedBlogs = useRecoilValue(bookmarkAtom);
+    const [flag, setFlag] = useState(false);
     
     const listBLogs = useRecoilValue(bookmarkedBlogsSelector);
 
@@ -26,9 +28,14 @@ export const  Profile = () => {
                 }
             })
                 setUser(response.data.user);
+                setFlag(true);
         }
         get();
     },[userAtom])
+
+    if(!flag){
+        return <ProfilePageSkeleton/>
+    }            
 
     return (
         <div>

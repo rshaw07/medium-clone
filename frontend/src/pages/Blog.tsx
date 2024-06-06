@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { AppBar } from "../components/AppBar"
 import { UserAvatar } from "../components/UserAvatar"
 import { Bookmark } from "../icons/BookmarkIcon"
-import { Clipboard } from "../icons/ClipboardIcon"
 import { LikeIcon } from "@/icons/LikeIcon"
 import axios from "axios"
 import { useRecoilState, useRecoilValue} from "recoil"
@@ -10,6 +9,7 @@ import { bookmarkAtom, likeAtom, urlAtom } from "@/atoms"
 import { BACKEND_URL } from "@/config"
 import moment from "moment"
 import { SingleBlogSkeleton } from "@/components/SingleBlogSkeleton"
+import { ClipboardPopover } from "@/components/ClipboardPopover"
 
 interface blogType {
     draft: boolean,
@@ -153,7 +153,7 @@ function Bar({ blogId,likeValue, setLikeValue, mark, setMark}: props) {
             </div>
             <div className="flex col-span-1 justify-between">
                 <div>
-                    <Clipboard blogId={blogId}/>
+                    <ClipboardPopover blogId={blogId}/>
                 </div>
                 <div>
                     <Bookmark blogId={blogId} mark={mark} setMark={setMark}/>

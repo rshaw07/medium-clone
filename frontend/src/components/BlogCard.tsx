@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Bookmark } from "../icons/BookmarkIcon";
-import { Clipboard } from "../icons/ClipboardIcon";
 import { useNavigate } from "react-router-dom";
 import { UserAvatar } from "./UserAvatar";
 import { ImageCard } from "./ImageCard";
+import { ClipboardPopover } from "./ClipboardPopover";
 
 interface BlogCardType {
     id: string,
@@ -70,7 +70,7 @@ export const BlogCard = ({blog, flag}: {blog: BlogCardType, flag: boolean}) =>{
             </div>
             <div className="col-span-1 text-slate-400 flex justify-evenly">
               <div className="flex justify-center flex-col">
-                <Clipboard blogId={blog.id} />
+                <ClipboardPopover blogId={blog.id} />
               </div>
               <div className=" flex justify-center flex-col">
                 <Bookmark blogId={blog.id} mark={mark} setMark={setMark} />
