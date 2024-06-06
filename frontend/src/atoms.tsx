@@ -3,6 +3,15 @@ import { atom, selector } from "recoil"
 import { BACKEND_URL } from "./config";
 import moment from "moment";
 
+interface User{
+    id: string,
+    name: string,
+    email: string,
+    avatar: string,
+    password: string,
+    bio: string
+}
+
 export const allBlogAtom = atom({
     key: "allBlogAtom",
     default: selector({
@@ -45,9 +54,16 @@ export const urlAtom = atom({
     default: ""
 })
 
-export const userAtom = atom({
+export const userAtom = atom<User>({
     key: "userAtom",
-    default: {}
+    default: {
+        id: "",
+        name: "",
+        email: "",
+        avatar: "",
+        password: "",
+        bio: ""
+    }
 })
 
 export const bookmarkAtom = atom({
