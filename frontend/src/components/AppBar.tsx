@@ -10,7 +10,7 @@ export const AppBar = () => {
         <div className="flex justify-between border-b border-slate-200 pl-20 pr-8 py-2">
             <div className="flex">
                 <div className="flex font-semibold cursor-pointer">
-                    <img onClick={() => navigate('/')} className="w-14" src="../../public/images/logo-medium.svg" alt="" />
+                    <img onClick={() => navigate('/')} className="w-14" src="https://miro.medium.com/v2/resize:fit:1400/1*psYl0y9DUzZWtHzFJLIvTw.png" alt="" />
                 </div>
                 <div className=" flex justify-center flex-col ml-6 ">
                     <SearchDialog/>

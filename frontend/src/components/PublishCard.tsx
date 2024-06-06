@@ -141,7 +141,7 @@ export function PublishCard({content, tagsInput, prevId, imageUrl, title}: {cont
         <button className="p-0.5">Publish</button>
       </DialogTrigger>
       <DialogContent className=" bg-white min-w-[100vw]">
-        <div className="grid grid-cols-5 px-48">
+        <div className="grid grid-cols-5 px-48 overflow-x-hidden">
           <div className="overflow-y-auto col-span-3 max-h-[92dvh] pr-12">
           <div className="text-slate-400 mt-10">
             Story Preview

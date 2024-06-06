@@ -17,7 +17,7 @@ export const AppBar2 = ({content, tagsInput, prevId, imageUrl, title}: {content:
         <div className="flex justify-around border-b border-slate-200  py-2 text-sm">
             <div className="flex">
                 <div className="flex cursor-pointer font-semibold">
-                    <img onClick={() => navigate('/')} className="w-14" src="../../public/images/logo-medium.svg" alt="" />
+                    <img onClick={() => navigate('/')} className="w-14" src="https://miro.medium.com/v2/resize:fit:1400/1*psYl0y9DUzZWtHzFJLIvTw.png" alt="" />
                 </div>
                 <div className=" flex justify-center flex-col ml-2">
                     Draft in Rishi Shaw
