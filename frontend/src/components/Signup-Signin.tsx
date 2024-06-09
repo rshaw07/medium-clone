@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios";
 import { BACKEND_URL } from "../config"
 import { Spinner } from "@/icons/Spinner";
+import { bookmarkAtom } from "@/atoms";
+import { useSetRecoilState } from "recoil";
 
 export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
+    const setBookmarkedBlogs = useSetRecoilState(bookmarkAtom);
     const [flag, setFlag] = useState(false);
     useEffect( () => {
 
@@ -29,6 +32,12 @@ export const Sign = ({type} : {type: 'signin' | 'signup'}) =>{
             postInputs
             )
             localStorage.setItem("token", "Bearer " + response.data.jwt);
+            const response2 = await axios.get(`${BACKEND_URL}/api/v1/bookmark`, {
+                headers: {
+                    "Authorization" : localStorage.getItem("token")
+                },
+            })
+            setBookmarkedBlogs(response2.data.bookmarks.map((bookmark:any) => bookmark.blogId));
             navigate("/blogs")
         } catch (error) {
             setFlag(false)

@@ -4,7 +4,6 @@ import { Signup } from './pages/Signup'
 import { Signin } from './pages/Signin'
 import { Blog } from './pages/Blog'
 import { Blogs } from './pages/Blogs'
-import { Logout } from './pages/Logout'
 import { CreateBlog } from './pages/CreateBlog'
 import { Search } from './pages/Search'
 import { Profile } from './pages/Profile'
@@ -28,7 +27,6 @@ function App() {
             <Route path="/blog/:id" element={<Blog/>} />
             <Route path="/edit/:id" element={<Edit/>} />
             <Route path="/blogs" element={<Blogs/>} />
-            <Route path="/logout" element={<Logout/>} />
             <Route path="/createBlog" element={<CreateBlog/>} />
             <Route path="/profile" element={<Profile/>} />
         </Routes>

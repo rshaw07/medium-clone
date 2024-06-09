@@ -37,7 +37,9 @@ import { useRecoilValue } from "recoil";
                 </DropdownMenuItem>
             </div>
             <div className="hover:bg-gray-100">
-                <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer" onClick={() => navigate('/logout')}>
+                <DropdownMenuItem className="hover:bg-gray-100 cursor-pointer" onClick={() => {
+                  localStorage.removeItem("token")
+                  navigate('/signup')}}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Log out</span>
                 </DropdownMenuItem>
